@@ -2810,6 +2810,7 @@ dependencies = [
  "httpmock",
  "moon_common",
  "moon_target",
+ "once_map",
  "proto_cli",
  "rustc-hash",
  "schematic",
@@ -3470,6 +3471,8 @@ name = "moon_task_builder"
 version = "0.1.0"
 dependencies = [
  "miette",
+ "moon_common",
+ "moon_config",
  "thiserror",
 ]
 
