@@ -3265,6 +3265,7 @@ dependencies = [
  "moon_file_group",
  "moon_project2",
  "rustc-hash",
+ "starbase_sandbox",
  "tracing",
 ]
 
