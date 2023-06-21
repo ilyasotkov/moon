@@ -1,3 +1,13 @@
 tasks:
   build:
-    command: echo Hello World
+    command: exit 0
+    options:
+      shell: true
+      cache: false
+  deploy:
+    deps:
+    - build
+    command: 'echo $USER'
+    options:
+      shell: true
+      cache: false
