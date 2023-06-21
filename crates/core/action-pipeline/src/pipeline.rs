@@ -170,6 +170,7 @@ impl Pipeline {
                 } else {
                     return Err(PipelineError::UnknownActionNode.into());
                 }
+
             }
 
             // Wait for all actions in this batch to complete
@@ -196,7 +197,9 @@ impl Pipeline {
 
                             if self.bail && result.has_failed() || result.should_abort() {
                                 abort_error =
-                                    Some(result.error.unwrap_or_else(|| "Unknown error!".into()));
+                                    Some(result.error.clone().unwrap_or_else(|| "Unknown error!".into()));
+                                results.push(result);
+
                             } else {
                                 results.push(result);
                             }
@@ -211,6 +214,7 @@ impl Pipeline {
                 }
             }
 
+            // Decide what to do with the result of the batch
             if let Some(abort_error) = abort_error {
                 if show_abort_log {
                     error!(
@@ -225,8 +229,11 @@ impl Pipeline {
                     })
                     .await?;
 
-                return Err(PipelineError::Aborted(abort_error).into());
+                // return Err(PipelineError::Aborted(abort_error).into());
+                break
+
             }
+
         }
 
         let duration = start.elapsed();

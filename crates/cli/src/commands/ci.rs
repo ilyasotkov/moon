@@ -14,7 +14,6 @@ use moon_workspace::Workspace;
 use rustc_hash::FxHashSet;
 use starbase::AppResult;
 use starbase_styles::color;
-use tokio::net::unix::pipe;
 
 type TargetList = Vec<Target>;
 

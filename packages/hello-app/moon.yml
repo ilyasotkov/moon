@@ -1,13 +1,13 @@
 tasks:
   build:
-    command: exit 0
+    command: exit 1
     options:
       shell: true
       cache: false
   deploy:
     deps:
     - build
-    command: 'echo $USER'
+    command: echo $USER
     options:
       shell: true
       cache: false

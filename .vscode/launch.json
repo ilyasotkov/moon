@@ -11,7 +11,7 @@
             "cargo": {
                 "args": ["build", "--bin", "moon"],
             },
-            "args": ["ci"],
+            "args": ["ci", "--bailOnError"],
             "cwd": "${workspaceFolder}"
         }
     ]
