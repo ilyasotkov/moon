@@ -440,6 +440,9 @@ pub enum Commands {
         #[arg(long, help = "Base branch, commit, or revision to compare against")]
         base: Option<String>,
 
+        #[arg(long, help = "Exit immediately if any task fails")]
+        bail_on_error: bool,
+
         #[arg(long, help = "Current branch, commit, or revision to compare with")]
         head: Option<String>,
 

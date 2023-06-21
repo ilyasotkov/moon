@@ -14,6 +14,7 @@ use moon_workspace::Workspace;
 use rustc_hash::FxHashSet;
 use starbase::AppResult;
 use starbase_styles::color;
+use tokio::net::unix::pipe;
 
 type TargetList = Vec<Target>;
 
@@ -174,6 +175,7 @@ fn generate_dep_graph(
 
 pub struct CiOptions {
     pub base: Option<String>,
+    pub bail_on_error: bool,
     pub concurrency: Option<usize>,
     pub head: Option<String>,
     pub job: Option<usize>,
@@ -212,6 +214,10 @@ pub async fn ci(options: CiOptions) -> AppResult {
     if let Some(concurrency) = options.concurrency {
         pipeline.concurrency(concurrency);
     }
+
+    if options.bail_on_error {
+        pipeline.bail_on_error();
+    };
 
     let results = pipeline
         .generate_report("ciReport.json")

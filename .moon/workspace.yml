@@ -7,10 +7,11 @@ projects:
   #   moon: '.'
   sources: {}
   globs:
-    - 'packages/*'
-    - '!packages/cli'
-    - '!packages/core-*'
-    - 'website'
+  - 'packages/my-app'
+    # - 'packages/*'
+    # - '!packages/cli'
+    # - '!packages/core-*'
+    # - 'website'
 
 generator:
   templates:

@@ -110,12 +110,14 @@ pub async fn run_cli() -> AppResult {
         Commands::Bin { tool } => bin(tool).await,
         Commands::Ci {
             base,
+            bail_on_error,
             head,
             job,
             job_total,
         } => {
             ci(CiOptions {
                 base,
+                bail_on_error,
                 concurrency: args.concurrency,
                 head,
                 job,
